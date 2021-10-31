@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{{parent()}} {{ title|title }} {% endblock %}
+
+
+{% block content %} 
+{{parent()}}
+		{% include 'menu.html.twig' %}
+		
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<h2>{{ title|title }} </h2>
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				
+				{% for ogrenci in ogrenciler %}					
+					 <div class="col">
+						<div class="card shadow-sm">
+							<a href="{{ path('studentsDetail', { 'id': ogrenci.getId }) }}" ><img src="{{ asset('img/ogrenci.jpg') }}" /> </a>
+								<div class="card-body">
+									<p class="card-text"> <a href="{{ path('studentsDetail', { 'id': ogrenci.getId }) }}" > {{ ogrenci.getName  }} {{ ogrenci.getSurname  }}</a> <br/>
+										Numara:{{ ogrenci.getNumber  }} <br/>
+									</p>
+								</div>
+							</div>
+						</div>					
+				{% endfor %}    		               
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{{parent()}} {{ title|title }} {% endblock %}
+
+
+{% block content %} 
+{{parent()}}
+		{% include 'menu.html.twig' %}
+		
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<h2>{{ title|title }} </h2>
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				
+				{% for akademisyen in akademisyenler %}					
+					 <div class="col">
+						<div class="card shadow-sm">
+								<a href="{{ path('academiciansDetail', { 'id': akademisyen.id }) }}" ><img src="{{ asset('img/akademisyen.jpg') }}" /> </a>
+								<div class="card-body">
+									<p class="card-text"> <a href="{{ path('academiciansDetail', { 'id': akademisyen.id }) }}" > {{ akademisyen.name  }} {{ akademisyen.surname  }}</a>  </p>
+									<small>{{ akademisyen.province  }}</small>
+								</div>
+							</div>
+						</div>					
+				{% endfor %}    		               
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

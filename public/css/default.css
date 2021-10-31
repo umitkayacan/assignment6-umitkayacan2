@@ -1,0 +1,18 @@
+#urun > ul {list-style: none;padding: 0; margin: 0;}
+#urun > ul > li{
+ 
+  color: #fff;
+  font-size:14px;
+  font-weight:bold;
+  background: #D8000C !important;
+  padding: 10px !important;
+  border-radius: 0 !important;
+  position: relative; 
+  display: inline-block !important;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  width:100%;
+  
+  }

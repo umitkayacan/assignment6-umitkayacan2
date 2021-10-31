@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{{parent()}} {{ogrenciBilgisi.getName() }} {{ogrenciBilgisi.getSurname() }} {% endblock %}
+
+{% block content %} 
+{{parent()}}
+		{% include 'menu.html.twig' %}
+		<div class="container col-xxl-8 px-4 py-5">
+			<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+				<div class="col-10 col-sm-8 col-lg-6">
+					<img src="{{ asset('img/akademisyen.jpg') }}" class="d-block mx-lg-auto img-fluid"  width="400"  loading="lazy" />
+				</div>
+				<div class="col-lg-6">
+					<h1 class="display-5 fw-bold lh-1 mb-3">{{ogrenciBilgisi.getName() }} {{ogrenciBilgisi.getSurname() }} </h1>
+					<p class="lead">{{ ogrenciBilgisi.getNumber() }}</p>
+				</div>
+				<hr/>			  			  			  
+			</div>						
+			
+			<div class="album py-5">
+				<div class="container">
+					<h2>Öğrencinin Aldığı Dersler ({{adet}}) </h2>
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+						{% for ders in dersler %}					
+							<div class="col">
+								<div class="card shadow-sm">
+									<a href="{{ path('lessonsDetail', { 'id': ders.id }) }}" ><img width="387" src="{{ asset('img/ders.jpg') }}" /> </a>
+										<div class="card-body">
+											<p class="card-text"> <a href="{{ path('lessonsDetail', { 'id': ders.getId }) }}" > {{ ders.getCoursename  }}</a> <br/>
+												Ders Kodu:{{ ders.getLessoncode  }} <br/>
+												Ders Açıklama:{{ ders.getLessondesc  }}
+											</p>
+										</div>
+								</div>
+							</div>					
+						{% endfor %}    		               
+					</div>
+				</div>
+			</div>			
+		</div>
+{% endblock %}

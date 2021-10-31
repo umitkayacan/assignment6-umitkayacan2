@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{{parent()}} {{ title|title }} {% endblock %}
+
+
+{% block content %} 
+{{parent()}}
+		{% include 'menu.html.twig' %}
+		
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<h2>{{ title|title }} </h2>
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				
+				{% for ders in dersler %}					
+					 <div class="col">
+						<div class="card shadow-sm">
+							<a href="{{ path('lessonsDetail', { 'id': ders.id }) }}" ><img src="{{ asset('img/ders.jpg') }}" /> </a>
+								<div class="card-body">
+									<p class="card-text"> <a href="{{ path('lessonsDetail', { 'id': ders.getId }) }}" > {{ ders.getCoursename  }}</a> <br/>
+										Ders Kodu:{{ ders.getLessoncode  }} <br/>
+										Ders Açıklama:{{ ders.getLessondesc  }}
+									</p>
+								</div>
+							</div>
+						</div>					
+				{% endfor %}    		               
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{{parent()}} {{ dersBilgisi.getCoursename() }} {% endblock %}
+
+{% block content %} 
+{{parent()}}
+		{% include 'menu.html.twig' %}
+		<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+			<div class="row align-items-center g-lg-5 py-5">
+				<div class="col-lg-7 text-center text-lg-start">
+					<h1 class="display-4 fw-bold lh-1 mb-3">Ders Detayları:</h1>
+					<h1 class="display-6 fw-bold lh-1 mb-3">{{ dersBilgisi.getCoursename() }}</h1>
+					<p class="col-lg-10 fs-4"> {{ dersBilgisi.getLessondesc() }}</p>
+				</div>
+				<div class="col-md-10 col-lg-5">
+					<div class="card mb-4 rounded-3 shadow-sm">
+						<div class="card-header py-3">
+							<h4 class="my-0 fw-normal">Dersi Veren Akademisyen Bilgisi</h4>
+						</div>
+						<div class="card-body">
+							<h1 class="card-title pricing-card-title">{{akademisyenBilgisi.getName}} {{akademisyenBilgisi.getSurname}}</h1>
+							<ul class="list-unstyled mt-3 mb-4">
+								<li>{{akademisyenBilgisi.getProvince}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr/>	
+		</div>
+		<div class="container marketing col-xl-10 col-xxl-8 ">
+			<h1 class="display-6 fw-bold lh-1 mb-3">Dersi Alan Öğrenciler:</h1>
+			<div class="row">
+				{% for ogrenci in ogrenciler %}		
+				<div class="col-lg-4">
+					<a href="{{ path('studentsDetail', { 'id': ogrenci.getId }) }}" ><img class=" rounded-circle" src="{{ asset('img/img.jpg') }}" /> </a>
+						<h2><a href="{{ path('studentsDetail', { 'id': ogrenci.getId }) }}" > {{ ogrenci.getName  }} {{ ogrenci.getSurname  }} </a></h2>
+						<p>Numara:{{ ogrenci.getNumber  }}</p>
+				</div>
+				{% endfor %} 
+			</div>
+		</div>	
+{% endblock %}

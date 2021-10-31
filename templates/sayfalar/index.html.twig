@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{{parent()}} {{ title }} {% endblock %}
+
+{% block stylesheets %} 
+{{parent()}}
+		<link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %} 
+{{parent()}}
+		{% include 'menu.html.twig' %}
+		<main class="container">
+		
+		<div class="row mb-2">
+			<div class="col-md-4">
+				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<strong class="d-inline-block mb-2 text-primary">Akademisyen Sayısı</strong>
+						<h3 class="mb-0">{{akademisyenAdet}} </h3>
+						
+						<a href="{{ path('academicians') }}" class="stretched-link">Akademisyen Listesine Ulaşmak İçin Tıklayınız</a>						
+					</div>
+					
+					
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<strong class="d-inline-block mb-2 text-primary">Ders Sayısı</strong>
+						<h3 class="mb-0">{{dersAdet}}</h3>
+						
+						
+						<a href="{{ path('lessons') }}" class="stretched-link">Ders Listesine Ulaşmak İçin Tıklayınız</a>						
+					</div>
+					
+					
+				</div>
+			</div>
+
+
+			<div class="col-md-4">
+				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<strong class="d-inline-block mb-2 text-primary">Öğrenci Sayısı</strong>
+						<h3 class="mb-0">{{ogrenciAdet}}</h3>
+						<a href="{{ path('students') }}" class="stretched-link">Öğrenci Listesine Ulaşmak İçin Tıklayınız</a>						
+					</div>
+					
+					
+				</div>
+			</div>			
+			
+			
+   
+  </div>
+
+
+
+</main>
+		
+		
+{% endblock %}
+
+
